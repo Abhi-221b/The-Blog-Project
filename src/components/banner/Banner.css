@@ -1,0 +1,21 @@
+@reference "../../index.css";
+
+.banner-section {
+  @apply bg-no-repeat bg-center bg-cover py-20 pt-36 relative z-10;
+}
+
+.banner-section .inner_section {
+  @apply max-w-3xl relative z-10 text-center md:text-left;
+}
+
+.banner-section .title {
+  @apply text-white;
+}
+
+.banner-section .description {
+  @apply mb-5;
+}
+
+.banner-section .btn-wrapper {
+  @apply pt-8 justify-center md:justify-start;
+}

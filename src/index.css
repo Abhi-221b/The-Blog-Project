@@ -1,0 +1,211 @@
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+
+@import "tailwindcss";
+
+:root {
+  line-height: 1.5;
+  font-weight: 400;
+
+  color-scheme: light dark;
+  color: rgba(255, 255, 255, 0.87);
+  background-color: #242424;
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  font-family: "Poppins", sans-serif;
+}
+
+p {
+  margin-bottom: 1rem;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: "Poppins", sans-serif;
+  margin-bottom: 0.75rem 0;
+}
+
+h1 {
+  font-size: 3.86rem;
+  margin-bottom: 1rem;
+}
+
+h2 {
+  font-size: 2.27rem;
+  margin-bottom: 1rem;
+}
+
+h3 {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+}
+
+h4 {
+  font-size: 1.75rem;
+  margin-bottom: 1rem;
+}
+
+h5 {
+  font-size: 1.13rem;
+  margin-bottom: 1rem;
+}
+
+h6 {
+  font-size: 1rem;
+  margin-bottom: 1rem;
+}
+
+ul,
+ol {
+  padding-left: 0;
+  margin-left: 0;
+}
+
+code {
+  color: #7d2525;
+}
+
+blockquote {
+  border-left: 2px solid #201b1b;
+  margin-left: 0.75rem;
+  padding-left: 0.75rem;
+  font-style: italic;
+  font-weight: 500;
+  background-color: rgba(37, 68, 96, 0.5);
+  color: #fff;
+  text-transform: capitalize;
+}
+
+form {
+  padding: 15px;
+  margin-bottom: 15px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-shadow: 5px 5px 10px 5px rgba(0, 0, 0, 0.35);
+}
+
+form input[type="email"],
+form input[type="file"],
+form input[type="number"],
+form input[type="password"],
+form input[type="tel"],
+form input[type="text"],
+form select,
+form textarea {
+  display: inline-block;
+  width: 100%;
+}
+
+form label {
+  display: block;
+}
+
+form select,
+form input[type="radio"],
+form input[type="checkbox"] {
+  width: auto;
+  float: right;
+}
+
+fieldset {
+  border: 1px solid #ccc;
+  padding: 10px 15px;
+  margin-bottom: 15px;
+}
+
+section {
+  position: relative;
+}
+
+a {
+  text-decoration: none;
+  color: #fff;
+  transition: all 0.2s ease;
+}
+
+a:hover {
+  color: #ffffffb2;
+}
+
+button {
+  border-radius: 8px;
+  border: 1px solid transparent;
+  padding: 0.6em 1.2em;
+  font-size: 1em;
+  font-weight: 500;
+  font-family: inherit;
+  background-color: #1a1a1a;
+  cursor: pointer;
+  transition: border-color 0.25s, box-shadow 0.25s;
+}
+
+button:hover {
+  border-color: #ffffff4d;
+  box-shadow: 0px 0px 6px 2px rgba(255, 255, 255, 0.3);
+}
+
+button:focus,
+button:focus-visible {
+  outline: 4px auto -webkit-focus-ring-color;
+}
+
+@media (prefers-color-scheme: light) {
+  :root {
+    color: #213547;
+    background-color: #ffffff;
+  }
+  a:hover {
+    color: #747bff;
+  }
+  button {
+    background-color: #f9f9f9;
+  }
+}
+
+.footer_wrapper ul {
+  padding: 0 0 16px;
+  margin: 0;
+}
+
+.footer_wrapper a {
+  @apply text-[#ffffffb2] hover:text-white;
+}
+
+.header_wrapper a {
+  @apply text-[#ffffffb2] hover:text-white;
+}
+
+@media (max-width: 767px) {
+  h1 {
+    font-size: 2.27rem;
+  }
+
+  h2 {
+    font-size: 2rem;
+  }
+
+  h3 {
+    font-size: 1.75rem;
+  }
+
+  h4 {
+    font-size: 1.15rem;
+  }
+
+  h5 {
+    font-size: 1rem;
+  }
+
+  h6 {
+    font-size: 0.75rem;
+  }
+}
