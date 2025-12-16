@@ -41,7 +41,14 @@ export default function Signup() {
         const userData = await appAuth.getCurrentUser();
         if (userData) {
           dispatch(checkLogin(userData));
-          navigate("/");
+          const token = await appAuth.generateMagicUrl(
+            userData.$id,
+            userData.email
+          );
+          if (token) {
+            console.log("hello visitor sending you to verify email");
+            navigate("/verify-email");
+          }
         }
       }
     } catch (error) {

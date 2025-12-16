@@ -9,6 +9,8 @@ import Input from "./formFeild/Input";
 import Signup from "./Signup";
 import Login from "./Login";
 import AuthLayout from "./AuthLayout";
+import EmailVerify from "./verify/EmailVerify";
+import Verified from "./verify/Verified";
 
 export {
   Container,
@@ -22,4 +24,6 @@ export {
   Signup,
   Login,
   AuthLayout,
+  EmailVerify,
+  Verified,
 };

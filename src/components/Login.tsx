@@ -35,12 +35,12 @@ export default function Login() {
 
   const onSubmit: SubmitHandler<formData> = async (data) => {
     try {
-      const loginData = await appAuth.login(data);
-      if (loginData) {
+      const session = await appAuth.login(data);
+      if (session) {
         const userData = await appAuth.getCurrentUser();
         if (userData) {
           dispatch(checkLogin(userData));
-          navigate("/");
+          navigate("/", { replace: true });
         }
       }
     } catch (error) {

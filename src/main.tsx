@@ -7,9 +7,11 @@ import { Provider } from "react-redux";
 import { store } from "./store/store.ts";
 import Home from "./pages/Home.tsx";
 import AboutUs from "./pages/AboutUs.tsx";
+import ContactPage from "./pages/ContactPage.tsx";
 import SignupPage from "./pages/SignupPage.tsx";
 import LoginPage from "./pages/LoginPage.tsx";
 import AuthLayout from "./components/AuthLayout.tsx";
+import { Verified, EmailVerify } from "./components/index.ts";
 
 const routes = createBrowserRouter([
   {
@@ -17,15 +19,41 @@ const routes = createBrowserRouter([
     element: <App />,
     children: [
       { index: true, element: <Home /> },
-      { path: "/signup", element: <SignupPage /> },
-      { path: "/login", element: <LoginPage /> },
       {
         path: "/about",
         element: (
-          <AuthLayout secure={true}>
+          <AuthLayout>
             <AboutUs />
           </AuthLayout>
         ),
+      },
+      {
+        path: "/verify",
+        element: <Verified />,
+      },
+      {
+        path: "/verify-email",
+        element: <EmailVerify />,
+      },
+      {
+        path: "/signup",
+        element: (
+          <AuthLayout authentication={false}>
+            <SignupPage />
+          </AuthLayout>
+        ),
+      },
+      {
+        path: "/login",
+        element: (
+          <AuthLayout authentication={false}>
+            <LoginPage />
+          </AuthLayout>
+        ),
+      },
+      {
+        path: "/contact",
+        element: <ContactPage />,
       },
     ],
   },

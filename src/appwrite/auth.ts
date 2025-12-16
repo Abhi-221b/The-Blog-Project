@@ -28,7 +28,8 @@ export class AppAuth {
       });
 
       if (userAccount) {
-        return this.login({ email, password });
+        const session = this.login({ email, password });
+        return session;
       } else {
         return userAccount;
       }
@@ -52,9 +53,27 @@ export class AppAuth {
   async getCurrentUser() {
     try {
       const userData = await this.account.get();
+      console.log("userData", userData);
       return userData;
     } catch (error) {
       return null;
+    }
+  }
+
+  async generateMagicUrl(userId: string, userEmail: string) {
+    try {
+      if (userId) {
+        const token = await this.account.createMagicURLToken({
+          userId: userId,
+          email: userEmail,
+          url: "http://localhost:5173/verify",
+          phrase: false,
+        });
+        console.log("token", token);
+        return token;
+      }
+    } catch (error) {
+      return error;
     }
   }
 
