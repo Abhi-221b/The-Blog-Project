@@ -111,6 +111,32 @@ export class postService {
     }
   }
 
+  async softDeletePost(rowId: string, update: updateData) {
+    try {
+      return await this.tablesDB.updateRow({
+        databaseId: conf.appwriteDatabaseId,
+        tableId: conf.appwriteCollectionId,
+        rowId,
+        data: { ...update, status: "Deleted" },
+        permissions: [Permission.delete(Role.team("Admin"))],
+      });
+    } catch (err) {
+      console.log("softDeletePost error", err);
+    }
+  }
+
+  async deletePost(rowId: string) {
+    try {
+      return await this.tablesDB.deleteRow({
+        databaseId: conf.appwriteDatabaseId,
+        tableId: conf.appwriteCollectionId,
+        rowId,
+      });
+    } catch (err) {
+      console.log("softDeletePost error", err);
+    }
+  }
+
   async showAllPostByQuery(queries: []) {
     try {
       return this.tablesDB.listRows({
