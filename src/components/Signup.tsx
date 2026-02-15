@@ -8,18 +8,23 @@ import { useAppDispatch } from "../store/hooks";
 import { checkLogin } from "../store/loginSlice";
 import { useNavigate } from "react-router";
 
-const formUserData = z.object({
-  name: z.string().min(1, "Username is required"),
-  email: z.email(),
-  password: z
-    .string()
-    .min(8, "Must be minimum 6 letter")
-    .regex(/[A-Z]/, "Must contain an uppercase letter")
-    .regex(/[a-z]/, "Must contain a lowercase letter")
-    .regex(/[0-9]/, "Must contain a number")
-    .regex(/[^A-Za-z0-9]/, "Must contain a special character"),
-});
-
+const formUserData = z
+  .object({
+    name: z.string().min(1, "Username is required"),
+    email: z.email(),
+    password: z
+      .string()
+      .min(8, "Must be minimum 6 letter")
+      .regex(/[A-Z]/, "Must contain an uppercase letter")
+      .regex(/[a-z]/, "Must contain a lowercase letter")
+      .regex(/[0-9]/, "Must contain a number")
+      .regex(/[^A-Za-z0-9]/, "Must contain a special character"),
+    confirmPassword: z.string(),
+  })
+  .refine((data) => data.password === data.confirmPassword, {
+    message: "Passwords do not match",
+    path: ["confirmPassword"],
+  });
 type formData = z.infer<typeof formUserData>;
 
 export default function Signup() {
@@ -36,7 +41,12 @@ export default function Signup() {
 
   const onSubmit: SubmitHandler<formData> = async (data) => {
     try {
-      const currentUserData = await appAuth.createAccount(data);
+      const { name, email, password } = data;
+      const currentUserData = await appAuth.createAccount({
+        name,
+        email,
+        password,
+      });
       if (currentUserData) {
         const userData = await appAuth.getCurrentUser();
         if (userData) {
@@ -52,7 +62,7 @@ export default function Signup() {
         }
       }
     } catch (error) {
-      throw error;
+      console.log("signup form", error);
     }
   };
 
@@ -88,6 +98,17 @@ export default function Signup() {
           />
           {errors.password && (
             <div className="text-red-500 mb-5">{errors.password?.message}</div>
+          )}
+          <Input
+            label="Confirm Your password:"
+            type="password"
+            className="userpassword"
+            {...register("confirmPassword")}
+          />
+          {errors.confirmPassword && (
+            <div className="text-red-500 mb-5">
+              {errors.confirmPassword?.message}
+            </div>
           )}
           <button type="submit">Submit</button>
         </form>
