@@ -1,4 +1,4 @@
-import { Client, ID, TablesDB, Query, Permission, Role } from "appwrite";
+import { Client, ID, TablesDB, Permission, Role } from "appwrite";
 import type { Models } from "appwrite";
 import conf from "../conf/conf";
 
